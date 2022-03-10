@@ -280,3 +280,19 @@ div.input__grp input {
 
   resize: none;
 }
+
+.down__arrow {
+  position: relative;
+  right: 40px;
+
+  font-size: 0.625em;
+  text-align: center;
+
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.input__down {
+  display: flex;
+  align-items: center;
+}

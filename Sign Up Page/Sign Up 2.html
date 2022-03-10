@@ -11,7 +11,7 @@
     <script src="Sign Up.js"></script>
 
     <!-- Boxicons Import -->
-    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
     <!-- Google Fonts (Poppins, Didact Gothic, Lexend Deca)-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,9 +33,13 @@
 
     <!-- Section for Form -->
     <div class="main__content">
-      <form class="form__group">
+      <!-- Div for flex style-->
+      <section class="form__group">
+        <!-- Section to divide form group -->
         <a href="/Landing Page/Landing Page.html"><i class="bx bx-x cross__symbol"></i></a>
+
         <div class="all__tags">
+          <!--Div Tag to add inline-margin-->
           <h2 class="welcome__text">Welcome!</h2>
 
           <div class="sign__in__grp">
@@ -43,29 +47,44 @@
             <h4>signing up!</h4>
           </div>
 
-          <div class="input__grp">
-            <h3>Culture</h3>
-            <input type="text" placeholder="Enter your culture" text="" />
-          </div>
+          <form action="/About Me Page/About Me.html">
+            <div class="input__grp">
+              <h3>Culture</h3>
+              <div class="input__down">
+                <input type="text" placeholder="Enter your culture" text="" required />
+                <i class="bx bxs-down-arrow down__arrow"></i>
+              </div>
+            </div>
 
-          <div class="input__grp">
-            <h3>Phone Number</h3>
-            <input type="tel" placeholder="Enter your phone number" text="" />
-          </div>
+            <div class="input__grp">
+              <h3>Phone Number</h3>
+              <input
+                type="tel"
+                pattern="[789][0-9]{9}"
+                placeholder="Enter your phone number"
+                text=""
+                required
+              />
+            </div>
 
-          <div class="input__grp">
-            <h3>About Yourself</h3>
-            <textarea
-              type="text"
-              placeholder="Mention your culture, and what you want to know more about"
-              text=""
-              class="textarea__input"
-            ></textarea>
-          </div>
+            <div class="input__grp">
+              <h3>About Yourself</h3>
+              <textarea
+                type="text"
+                placeholder="Mention your culture, and what you want to know more about"
+                text=""
+                class="textarea__input"
+                required
+              ></textarea>
+            </div>
 
-          <a href="Sign Up 2.html">
-            <button class="register__button" style="cursor: pointer">Register</button>
-          </a>
+            <input
+              type="submit"
+              value="Register"
+              class="register__button"
+              style="cursor: pointer"
+            />
+          </form>
 
           <div class="register__grp">
             <h3>
@@ -73,7 +92,7 @@
             </h3>
           </div>
         </div>
-      </form>
+      </section>
 
       <img src="/assets/form_image.svg" class="img__styling" alt="Image to fill canvas" />
     </div>
