@@ -56,12 +56,13 @@
 
   padding: 1.5vh 0.8vw;
 
-  background: rgba(229, 91, 84, 0.973);
+  background: rgba(229, 91, 84, 0.85);
   border-radius: 6px;
 
-  transition: transform 0.4s; /* Animation */
+  transition: 0.4s; /* Animation */
 }
 
 .body__button:hover {
   transform: scale(1.07);
+  background: rgba(229, 91, 84, 0.973);
 }
