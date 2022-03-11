@@ -1,0 +1,10 @@
+.grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 2fr;
+}
+
+.developer__photo {
+  width: clamp(50px, 11vw, 200px);
+
+  border-radius: 50%;
+}
