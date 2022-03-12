@@ -1,3 +1,7 @@
+* {
+  letter-spacing: 0.07em;
+}
+
 /* Classes for Background */
 .bg {
   position: relative;
