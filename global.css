@@ -1,9 +1,6 @@
 /* All Elements */
 * {
   margin: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
-
   box-sizing: border-box;
 }
 

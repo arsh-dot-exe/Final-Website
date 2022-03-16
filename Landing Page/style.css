@@ -1,5 +1,8 @@
 * {
   letter-spacing: 0.07em;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* Classes for Background */
