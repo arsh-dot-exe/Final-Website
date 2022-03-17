@@ -42,31 +42,44 @@
             <h4>resume sharing your cultures!</h4>
           </div>
 
-          <div class="input__grp">
-            <h3>User name</h3>
-            <input type="text" placeholder="Enter your user name" text="" />
-          </div>
-
-          <div class="input__grp">
-            <h3>Password</h3>
-            <input type="password" placeholder="Enter your password" text="" />
-          </div>
-
-          <div class="remember__forgot__grp">
-            <div class="remember__grp">
-              <input
-                type="checkbox"
-                class="remember__me__button"
-                title="Remember Me Checkbox"
-                checked
-              />
-              <label class="remember__me__text"> Remember Me </label>
+          <form action="">
+            <!-- Div for Username Input -->
+            <div class="input__grp">
+              <h3>User name</h3>
+              <input type="text" placeholder="Enter your user name" text="" required />
             </div>
 
-            <a href="#" class="forgot__password">Forgot Password?</a>
-          </div>
+            <!-- Div for Password Input -->
+            <div class="input__grp">
+              <h3>Password</h3>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                text=""
+                maxlength="20"
+                minlength="4"
+                requiredtext=""
+                required
+              />
+            </div>
 
-          <button class="login__button">Login</button>
+            <!-- Div for Remember Me Checkbox and Forgot Password link -->
+            <div class="remember__forgot__grp">
+              <div class="remember__grp">
+                <input
+                  type="checkbox"
+                  class="remember__me__button"
+                  title="Remember Me Checkbox"
+                  checked
+                />
+                <label class="remember__me__text"> Remember Me </label>
+              </div>
+              <a href="#" class="forgot__password">Forgot Password?</a>
+            </div>
+
+            <!-- Login Button -->
+            <input type="submit" class="login__button" style="cursor: pointer" value="Login" />
+          </form>
 
           <div class="register__grp">
             <h3>

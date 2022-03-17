@@ -8,6 +8,7 @@
     <!-- Link to files -->
     <link rel="stylesheet" type="text/css" href="/global.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="PasswordChecker.js"></script>
 
     <!-- Boxicons Import -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
@@ -56,6 +57,7 @@
             <div class="input__grp">
               <h3>Password</h3>
               <input
+                id="password"
                 type="password"
                 placeholder="Enter your password"
                 text=""
@@ -67,12 +69,16 @@
 
             <div class="input__grp">
               <h3>Confirm Password</h3>
-              <input type="password" placeholder="Confirm your password" text="" required />
+              <input
+                id="confirm_password"
+                type="password"
+                placeholder="Confirm your password"
+                text=""
+                required
+              />
             </div>
 
-            <!-- <a href="Sign Up 2.html"> -->
             <input type="submit" class="register__button" style="cursor: pointer" value="Confirm" />
-            <!-- </a> -->
           </form>
 
           <div class="register__grp">

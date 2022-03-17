@@ -1,0 +1,64 @@
+/* Change margin for header */
+.header__class {
+  margin-inline: 2vw !important;
+}
+
+.header_class::after {
+  content: "";
+  width: 100%;
+  border: 1px solid;
+}
+/* Styl
+ing for search input/icon div */
+div {
+  display: flex;
+  align-items: center;
+}
+
+/* Search Input */
+div.search__input input {
+  /* Text formatting */
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0px;
+
+  color: #000;
+
+  padding: 1.25em 0;
+  padding-left: 2.2em;
+
+  /* Box Formatting */
+  background: #ffffff;
+  border: 0.6px solid #282828;
+  box-sizing: border-box;
+  border-radius: 6px;
+
+  position: relative;
+  width: 307px;
+  border-radius: 6px;
+}
+
+/* Search Icon */
+div.search__input i {
+  position: relative;
+  right: -27px;
+
+  font-size: 1.1875em;
+  color: #7f8289;
+
+  z-index: 3;
+}
+
+/* Styling for profile picture */
+.user__pfp {
+  width: 3vw;
+  margin-right: 1vw;
+
+  border-radius: 50%;
+}
+
+.user__pfp::before {
+  padding-top: 100%;
+}
