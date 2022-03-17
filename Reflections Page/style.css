@@ -122,10 +122,6 @@ div.search__input i {
   font-weight: bold;
 }
 
-.right {
-  transform: rotate(180);
-}
-
 /* Row Div */
 .row__cards {
   display: flex;
@@ -140,10 +136,11 @@ div.search__input i {
   background: #ffffff;
   border-radius: 8px;
 
-  height: 100%;
+  align-self: stretch;
 
   padding: 1.25em;
   padding-bottom: 0.75em;
+  position: relative;
 }
 
 .profile__info {
@@ -198,6 +195,9 @@ div.search__input i {
 .original_and_date {
   display: flex;
   justify-content: space-between;
+
+  position: relative;
+  bottom: 0px;
 }
 
 .reflection_show_original {
