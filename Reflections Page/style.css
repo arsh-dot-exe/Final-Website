@@ -111,6 +111,11 @@ div.search__input i {
 }
 
 /* Styling for arrows */
+.arrow__btn {
+  visibility: hidden;
+  cursor: pointer;
+}
+
 .arrow {
   padding: 0.125em;
 
@@ -120,6 +125,8 @@ div.search__input i {
 
   font-size: 30px;
   font-weight: bold;
+
+  visibility: visible;
 }
 
 /* Row Div */
