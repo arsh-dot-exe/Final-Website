@@ -75,10 +75,17 @@
                 placeholder="Confirm your password"
                 text=""
                 required
+                onkeyup="validatePassword()"
               />
             </div>
 
-            <input type="submit" class="register__button" style="cursor: pointer" value="Confirm" />
+            <input
+              type="submit"
+              class="register__button"
+              style="cursor: pointer"
+              value="Confirm"
+              onclick="userRegister1()"
+            />
           </form>
 
           <div class="register__grp">
@@ -92,4 +99,12 @@
       <img src="/assets/form_image.svg" class="img__styling" alt="Image to fill canvas" />
     </div>
   </body>
+
+  <!-- Scripts to load for Database (MUST BE DONE AFTER BODY TAG) -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+  <!-- Link to JS File (MUST BE DONE AFTER LOADING DATABASE FILES) -->
+  <script src="/script.js"></script>
 </html>
