@@ -8,7 +8,7 @@
     <!-- Link to files -->
     <link rel="stylesheet" type="text/css" href="/global.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="Sign Up.js"></script>
+    <script src="/script.js"></script>
 
     <!-- Boxicons Import -->
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
@@ -78,13 +78,16 @@
               ></textarea>
             </div>
 
-            <input
-              type="submit"
-              value="Register"
-              class="register__button"
-              style="cursor: pointer"
-              onclick="userRegister2()"
-            />
+            <div class="button__container">
+              <button class="go__back" onclick="goBack()">Go Back</button>
+
+              <input
+                type="submit"
+                value="Register"
+                class="register__button"
+                onclick="userRegister2()"
+              />
+            </div>
           </form>
 
           <div class="register__grp">

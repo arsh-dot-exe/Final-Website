@@ -40,3 +40,7 @@ function userLogin() {
 
   console.log(email, password);
 }
+
+function goBack() {
+  window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%201.html";
+}
