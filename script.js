@@ -1,6 +1,7 @@
 const firebaseConfig = {
   apiKey: "AIzaSyC9s_hzLcJwxlm-CsOF0rrQ3H9xDu3hhvw",
   authDomain: "dd-find-culture-website.firebaseapp.com",
+  databaseURL: "https://dd-find-culture-website-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "dd-find-culture-website",
   storageBucket: "dd-find-culture-website.appspot.com",
   messagingSenderId: "363929239376",
@@ -19,35 +20,48 @@ function userRegister1() {
   const emailId = document.getElementById("emailId").value;
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+  const form = document.getElementById("SignInForm1");
 
-  auth
-    .createUserWithEmailAndPassword(emailId, password)
-    .then(function () {})
-    .catch(function (error) {
-      var error_code = errow.code;
-      var error_message = errow.message;
-    });
-}
+  console.log(form.checkValidity());
+  if (validatePassword() && password.length >= 6) {
+    auth
+      .createUserWithEmailAndPassword(emailId, password)
+      .then(() => {
+        console.log("creating user");
+        var user = auth.currentUser;
 
-// Functions to validate password and confirm password in Sign Up Page
-function validatePassword() {
-  password = document.getElementById("password");
-  confirmPassword = document.getElementById("confirm_password");
+        // Referance to Database
+        var db_ref = database.ref();
 
-  if (password.value != confirmPassword.value) {
-    confirmPassword.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirmPassword.setCustomValidity("");
+        // Create user data
+        var user_data = {
+          email: email,
+          username: username,
+        };
+
+        db_ref.child("users/" + user.uid).set(user_data);
+      })
+      .catch((error) => {
+        var error_code = error.code;
+        var error_message = error.message;
+
+        alert(error_message);
+      });
   }
 }
+// Functions to validate password and confirm password in Sign Up Page
+function validatePassword() {
+  password = document.getElementById("password").value;
+  confirmPassword = document.getElementById("confirm_password").value;
+  match__div = document.getElementById("match__div");
 
-function userRegister2() {}
-
-function userLogin() {
-  email = document.getElementById("email__input").value;
-  password = document.getElementById("password__input").value;
-
-  console.log(email, password);
+  if (password == confirmPassword && password.length >= 6) {
+    match__div.style.visibility = "hidden";
+    return true;
+  } else {
+    match__div.style.visibility = "visible";
+    return false;
+  }
 }
 
 function goBack() {

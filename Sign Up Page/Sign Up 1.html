@@ -42,7 +42,7 @@
             <h4>share your cultures!</h4>
           </div>
 
-          <form action="Sign Up 2.html">
+          <form id="SignInForm1">
             <div class="input__grp">
               <h3>Email Address</h3>
               <input
@@ -73,7 +73,8 @@
                 placeholder="Enter your password"
                 text=""
                 maxlength="20"
-                minlength="4"
+                minlength="6"
+                oninput="validatePassword()"
                 required
               />
             </div>
@@ -86,12 +87,17 @@
                 placeholder="Confirm your password"
                 text=""
                 required
-                onkeyup="validatePassword()"
+                oninput="validatePassword()"
               />
+
+              <div class="match__div" id="match__div">
+                <i class="bx bxs-alarm-exclamation error__icon"></i>
+                <p class="match__text">Passwords dont match!</p>
+              </div>
             </div>
 
             <input
-              type="submit"
+              type="button"
               class="reg__button"
               style="cursor: pointer"
               value="Confirm"
