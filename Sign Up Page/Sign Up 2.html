@@ -47,11 +47,11 @@
             <h4>signing up!</h4>
           </div>
 
-          <form action="/About Me Page/About Me.html">
+          <form onsubmit="userRegister2();return false">
             <div class="input__grp">
               <h3>Culture</h3>
               <div class="input__down">
-                <input type="text" placeholder="Enter your culture" text="" required />
+                <input type="text" id="culture" placeholder="Enter your culture" text="" required />
                 <i class="bx bxs-down-arrow down__arrow"></i>
               </div>
             </div>
@@ -60,6 +60,7 @@
               <h3>Phone Number</h3>
               <input
                 type="tel"
+                id="phoneNum"
                 pattern="[789][0-9]{9}"
                 placeholder="Enter your phone number"
                 text=""
@@ -70,6 +71,7 @@
             <div class="input__grp">
               <h3>About Yourself</h3>
               <textarea
+                id="userBio"
                 type="text"
                 placeholder="Mention your culture, and what you want to know more about"
                 text=""
@@ -81,12 +83,7 @@
             <div class="button__container">
               <button class="go__back" onclick="goBack()">Go Back</button>
 
-              <input
-                type="submit"
-                value="Register"
-                class="register__button"
-                onclick="userRegister2()"
-              />
+              <input type="submit" value="Register" class="register__button" />
             </div>
           </form>
 

@@ -15,6 +15,8 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
+var userUid;
+
 // Function to register first sign up page
 function userRegister1() {
   const emailId = document.getElementById("emailId").value;
@@ -39,6 +41,9 @@ function userRegister1() {
         console.log(user_data);
 
         db_ref.child("users/" + user.uid).set(user_data);
+        userUid = user.uid;
+
+        window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%202.html";
       })
       .catch((error) => {
         var error_code = error.code;
@@ -64,6 +69,27 @@ function validatePassword() {
   }
 }
 
+// This function will be used in the second sign up page to go back
 function goBack() {
   window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%201.html";
+}
+
+// This function will register the second sign up page input fields
+function userRegister2() {
+  const culture = document.getElementById("culture").value;
+  const phoneNum = document.getElementById("phoneNum").value;
+  const userBio = document.getElementById("userBio").value;
+
+  // Referance to Database
+  var db_ref = database.ref();
+
+  // Create user data
+  var user_data = {
+    culture: culture,
+    phoneNumber: phoneNum,
+    userBio: userBio,
+  };
+
+  db_ref.child("users/" + userUid).set(user_data);
+  userUid = user.uid;
 }
