@@ -16,8 +16,17 @@ const database = firebase.database();
 
 // Function to register first sign up page
 function userRegister1() {
-  const password = document.getElementById("password");
-  const confirmPassword = document.getElementById("confirm_password");
+  const emailId = document.getElementById("emailId").value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  auth
+    .createUserWithEmailAndPassword(emailId, password)
+    .then(function () {})
+    .catch(function (error) {
+      var error_code = errow.code;
+      var error_message = errow.message;
+    });
 }
 
 // Functions to validate password and confirm password in Sign Up Page
