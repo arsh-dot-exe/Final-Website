@@ -40,10 +40,14 @@ function userRegister1() {
         };
         console.log(user_data);
 
-        db_ref.child("users/" + user.uid).set(user_data);
-        userUid = user.uid;
+        db_ref
+          .child("users/" + user.uid)
+          .set(user_data)
+          .then(() => {
+            userUid = user.uid;
 
-        window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%202.html";
+            window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%202.html";
+          });
       })
       .catch((error) => {
         var error_code = error.code;

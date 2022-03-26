@@ -228,7 +228,6 @@ button {
 
 .register__button:hover {
   transform: scale(1.2);
-  color: black;
 }
 
 .go__back:hover {
