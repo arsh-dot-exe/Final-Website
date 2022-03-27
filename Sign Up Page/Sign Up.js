@@ -18,7 +18,7 @@ const database = firebase.database();
 var userUid;
 
 // Function to register first sign up page
-function userRegister1() {
+function userRegister1(event) {
   const emailId = document.getElementById("emailId").value;
   const user_name = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -44,6 +44,7 @@ function userRegister1() {
           .child("users/" + user.uid)
           .set(user_data)
           .then(() => {
+            sessionStorage.setItem("userUid", user.uid);
             userUid = user.uid;
 
             window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%202.html";
@@ -56,6 +57,9 @@ function userRegister1() {
         alert(error_message);
       });
   }
+
+  event.preventDefault();
+  return false;
 }
 
 // This function will validate the password inputted in the fields
@@ -79,21 +83,37 @@ function goBack() {
 }
 
 // This function will register the second sign up page input fields
-function userRegister2() {
-  const culture = document.getElementById("culture").value;
-  const phoneNum = document.getElementById("phoneNum").value;
-  const userBio = document.getElementById("userBio").value;
+function userRegister2(event) {
+  userUid = sessionStorage.getItem("userUid");
+  if (userUid != undefined) {
+    const culture = document.getElementById("culture").value;
+    const phoneNum = document.getElementById("phoneNum").value;
+    const userBio = document.getElementById("userBio").value;
 
-  // Referance to Database
-  var db_ref = database.ref();
+    // Referance to Database
+    var db_ref = database.ref("users/" + userUid);
 
-  // Create user data
-  var user_data = {
-    culture: culture,
-    phoneNumber: phoneNum,
-    userBio: userBio,
-  };
+    // Create user data
+    var user_data = {
+      culture: culture,
+      phoneNumber: phoneNum,
+      userBio: userBio,
+    };
 
-  db_ref.child("users/" + userUid).set(user_data);
-  userUid = user.uid;
+    console.log("users/" + userUid);
+    db_ref
+      .update(user_data)
+      .then(() => {
+        window.location.href = "http://127.0.0.1:5500/Content%20Page/Content.html";
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  } else {
+    alert("You have to fill the first page first.");
+    window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%201.html";
+  }
+
+  event.preventDefault();
+  return false;
 }
