@@ -38,7 +38,7 @@
           </div>
 
           <!-- <form action="/Content Page/Content.html"> -->
-          <form>
+          <form onsubmit="userLogin(event)">
             <!-- Div for Username Input -->
             <div class="input__grp">
               <h3>Email Address</h3>
@@ -81,13 +81,7 @@
             </div>
 
             <!-- Login Button -->
-            <input
-              type="submit"
-              class="login__button"
-              style="cursor: pointer"
-              value="Login"
-              onclick="userLogin()"
-            />
+            <input type="submit" class="login__button" style="cursor: pointer" value="Login" />
           </form>
 
           <div class="register__grp">
@@ -108,5 +102,5 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
   <!-- Link to JS File (MUST BE DONE AFTER LOADING DATABASE FILES) -->
-  <script src="/script.js"></script>
+  <script src="Sign In.js"></script>
 </html>
