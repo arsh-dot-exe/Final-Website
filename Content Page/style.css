@@ -224,6 +224,14 @@ body {
   width: 60%;
 }
 
+.user__bio::before {
+  content: open-quote;
+}
+
+.user__bio::after {
+  content: close-quote;
+}
+
 .view__profile__button {
   display: flex;
   justify-content: center;

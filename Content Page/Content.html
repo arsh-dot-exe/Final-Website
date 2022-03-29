@@ -47,122 +47,45 @@
       <a href="#" class="see__top__btn">See top rated</a>
     </section>
 
-    <section id="User Group">
-      <div class="culture_and_view_btn">
-        <h1 class="culture__heading">Culture 1</h1>
-        <button class="view__more">View more profiles</button>
-      </div>
+    <div data-culture-container>
+      <!-- This template is for A WHOLE CULTURE GROUP -->
+      <template data-culture-group>
+        <!-- Header Component -->
+        <div class="culture_and_view_btn">
+          <h1 class="culture__heading" data-culture-heading>Culture 1</h1>
+          <button class="view__more">View more profiles</button>
+        </div>
 
-      <template>
-        <div class="user__card">
-          <div class="profile__info">
-            <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
-            <div class="username__cult">
-              <p class="user__name">Username</p>
-              <p class="user__culture">Culture of the user</p>
+        <div data-user-cards-container>
+          <!-- This template is for A USER CARD -->
+          <template data-user-template>
+            <div class="user__card">
+              <div class="profile__info">
+                <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
+                <div class="username__cult">
+                  <p class="user__name" data-username>Username</p>
+                  <p class="user__culture" data-culture>Culture of the user</p>
+                </div>
+              </div>
+              <p class="user__bio" data-user-bio>
+                <q
+                  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+                  Praesent libero. Sed cursus ante dapibus diam. Sed nisi...</q
+                >
+              </p>
+              <a href="" class="view__profile__button">View Profile</a>
             </div>
-          </div>
-          <p class="user__bio">
-            <q
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-              libero. Sed cursus ante dapibus diam. Sed nisi...</q
-            >
-          </p>
-          <a href="" class="view__profile__button">View Profile</a>
+          </template>
         </div>
       </template>
-
-      <div class="user__card">
-        <div class="profile__info">
-          <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
-          <div class="username__cult">
-            <p class="user__name">Username</p>
-            <p class="user__culture">Culture of the user</p>
-          </div>
-        </div>
-        <p class="user__bio">
-          <q
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-            libero. Sed cursus ante dapibus diam. Sed nisi...</q
-          >
-        </p>
-        <a href="" class="view__profile__button">View Profile</a>
-      </div>
-
-      <div class="user__card">
-        <div class="profile__info">
-          <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
-          <div class="username__cult">
-            <p class="user__name">Username</p>
-            <p class="user__culture">Culture of the user</p>
-          </div>
-        </div>
-        <p class="user__bio">
-          <q
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-            libero. Sed cursus ante dapibus diam. Sed nisi...</q
-          >
-        </p>
-        <a href="" class="view__profile__button">View Profile</a>
-      </div>
-    </section>
-
-    <section id="User Group">
-      <div class="culture_and_view_btn">
-        <h1 class="culture__heading">Culture 2</h1>
-        <button class="view__more">View more profiles</button>
-      </div>
-
-      <div class="user__card">
-        <div class="profile__info">
-          <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
-          <div class="username__cult">
-            <p class="user__name">Username</p>
-            <p class="user__culture">Culture of the user</p>
-          </div>
-        </div>
-        <p class="user__bio">
-          <q
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-            libero. Sed cursus ante dapibus diam. Sed nisi...</q
-          >
-        </p>
-        <a href="" class="view__profile__button">View Profile</a>
-      </div>
-
-      <div class="user__card">
-        <div class="profile__info">
-          <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
-          <div class="username__cult">
-            <p class="user__name">Username</p>
-            <p class="user__culture">Culture of the user</p>
-          </div>
-        </div>
-        <p class="user__bio">
-          <q
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-            libero. Sed cursus ante dapibus diam. Sed nisi...</q
-          >
-        </p>
-        <a href="" class="view__profile__button">View Profile</a>
-      </div>
-
-      <div class="user__card">
-        <div class="profile__info">
-          <img src="/Reflections Page/temp_profile_pfp.svg" alt="" class="profile__picture" />
-          <div class="username__cult">
-            <p class="user__name">Username</p>
-            <p class="user__culture">Culture of the user</p>
-          </div>
-        </div>
-        <p class="user__bio">
-          <q
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-            libero. Sed cursus ante dapibus diam. Sed nisi...</q
-          >
-        </p>
-        <a href="" class="view__profile__button">View Profile</a>
-      </div>
-    </section>
+    </div>
   </body>
+
+  <!-- Scripts to load for Database (MUST BE DONE AFTER BODY TAG) -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+  <!-- Link to JS File (MUST BE DONE AFTER LOADING DATABASE FILES) -->
+  <script src="script.js"></script>
 </html>
