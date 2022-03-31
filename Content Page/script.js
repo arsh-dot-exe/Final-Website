@@ -14,13 +14,15 @@ const app = firebase.initializeApp(firebaseConfig);
 // Initalize Variables
 const auth = firebase.auth();
 const database = firebase.database();
+var db_ref = database.ref("users/");
 
 const userUid = sessionStorage.getItem("userUid");
 
 const cultureContainer = document.querySelector("[data-culture-container]");
 const cultureGroupTemplate = document.querySelector("[data-culture-group]");
+const searchInput = document.querySelector("[data-search]");
 
-var db_ref = database.ref("users/");
+let users = [];
 
 db_ref.on(
   "value",
@@ -38,18 +40,18 @@ db_ref.on(
       const userCardTemplate = culture_group.querySelector("[data-user-template]");
 
       culture.forEach((user) => {
-        log(user);
         const card = userCardTemplate.content.cloneNode(true).children[0];
-        log(card);
 
         const username = card.querySelector("[data-username]");
-        const cult_user = card.querySelector("[data-culture]");
+        const user_culture = card.querySelector("[data-culture]");
         const user_bio = card.querySelector("[data-user-bio]");
 
         username.textContent = user.user_name;
-        cult_user.textContent = user.culture;
+        user_culture.textContent = user.culture;
         user_bio.textContent = user.userBio;
         userCardContainer.append(card);
+
+        users.push({ name: user.user_name, culture: user.culture, element: card });
       });
 
       cultureContainer.append(culture_group);
@@ -59,6 +61,22 @@ db_ref.on(
     console.log("The read failed: " + errorObject.name);
   }
 );
+
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  users.forEach((user) => {
+    const isVisible =
+      user.name.toLowerCase().includes(value) || user.culture.toLowerCase().includes(value);
+    user.element.classList.toggle("hide", !isVisible);
+  });
+
+  $(".cult__grp").each(function () {
+    // console.log($(".user__card:visible", this));
+    console.log($(".user__card:hidden", this));
+
+    return $(".culture__heading", this).toggle($(".user__card:visible", this).length != 0);
+  });
+});
 
 function log(val) {
   console.log(val);
