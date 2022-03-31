@@ -1,6 +1,7 @@
 body {
   padding-bottom: 10em !important;
 }
+
 /* Change margin for header */
 .header__class {
   padding-top: 1vh;
@@ -259,4 +260,106 @@ body {
 
 .hide {
   display: none;
+}
+
+.modal__dialog::backdrop {
+  background: linear-gradient(45deg, rgba(0, 173, 191, 0.75) 0%, rgba(70, 94, 251, 0.75) 100%);
+  opacity: 0.4;
+}
+
+.modal__dialog {
+  top: 40%;
+  transform: translateY(-50%);
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal__div {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+}
+
+.modal__heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.modal__culture {
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  color: #ababab;
+
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.modal__bio {
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.07em;
+
+  text-align: center;
+
+  padding-bottom: 1em;
+}
+
+.modal__bio::before {
+  content: open-quote;
+}
+
+.modal__bio::after {
+  content: close-quote;
+}
+
+.modal__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  border: none;
+  border-radius: 11px;
+
+  /* Text Formatting */
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height */
+
+  letter-spacing: 0.07em;
+  text-decoration-line: underline;
+
+  color: #ffffff;
+  cursor: pointer;
+
+  width: 10em;
+
+  margin-inline: 0.35rem;
+}
+
+.no_btn {
+  background-color: #ad4662;
+}
+.yes_btn {
+  background-color: #51a75b;
+}
+
+.button__container {
+  display: flex;
 }

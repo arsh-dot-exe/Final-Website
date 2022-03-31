@@ -74,7 +74,6 @@ searchInput.addEventListener("input", (e) => {
 
   $(".cult__grp").each(function () {
     // console.log($(".user__card:visible", this));
-    console.log($(".user__card:hidden", this));
 
     return $(".culture__heading", this).toggle($(".user__card:visible", this).length != 0);
   });
@@ -83,16 +82,26 @@ searchInput.addEventListener("input", (e) => {
 function viewProfile(element) {
   card = element.parentNode;
 
-  const username = card.querySelector("[data-username]").textContent;
-  const user_culture = card.querySelector("[data-culture]").textContent;
-  const user_bio = card.querySelector("[data-user-bio]").textContent;
+  const username_value = card.querySelector("[data-username]").textContent;
+  const user_culture_value = card.querySelector("[data-culture]").textContent;
+  const user_bio_value = card.querySelector("[data-user-bio]").textContent;
 
   modal.showModal();
+
+  const username_field = modal.querySelector("[data-modal-heading]");
+  const culture_field = modal.querySelector("[data-modal-culture]");
+  const bio_field = modal.querySelector("[data-modal-bio]");
+
+  username_field.textContent = username_value;
+  culture_field.textContent = user_culture_value;
+  bio_field.textContent = user_bio_value;
 }
 
 function closeModal() {
   modal.close();
 }
+
+function modalYes() {}
 
 function sortCultures(all_values) {
   sorted_list = [];

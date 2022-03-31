@@ -85,15 +85,16 @@
     </div>
 
     <dialog class="modal__dialog" id="modal">
-      <h2 class="modal__heading" data-modal__heading>Heading</h2>
-      <h2 class="modal__culture" data-modal__culture>Culture</h2>
-      <p class="modal__bio" data-modal__bio>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, velit?
-      </p>
-
-      <div class="button__container" button__container>
-        <button class="no_btn modal__btn" onclick="closeModal()">No</button>
-        <button class="yes_btn modal__btn" onclick="modalYes()">Yes</button>
+      <div class="modal__div">
+        <h2 class="modal__heading" data-modal-heading>Heading</h2>
+        <h2 class="modal__culture" data-modal-culture>Culture</h2>
+        <p class="modal__bio" data-modal-bio>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, velit?
+        </p>
+        <div class="button__container" button__container>
+          <button class="no_btn modal__btn" onclick="closeModal()">No</button>
+          <button class="yes_btn modal__btn" onclick="modalYes()">Yes</button>
+        </div>
       </div>
     </dialog>
   </body>
