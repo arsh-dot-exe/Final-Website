@@ -89,19 +89,3 @@ function sortCultures(all_values) {
 
   return sorted_list;
 }
-
-/*
-console.log(user);
-
-      const card = userCardTemplate.content.cloneNode(true).children[0];
-      const username = card.querySelector("[data-username]");
-      const cult_user = card.querySelector("[data-culture]");
-      const user_bio = card.querySelector("[data-user-bio]");
-
-      username.textContent = user.user_name;
-      cult_user.textContent = user.culture;
-      user_bio.textContent = user.userBio;
-
-      userCardContainer.append(card);
-
-      */
