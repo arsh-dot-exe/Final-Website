@@ -22,6 +22,8 @@ const cultureContainer = document.querySelector("[data-culture-container]");
 const cultureGroupTemplate = document.querySelector("[data-culture-group]");
 const searchInput = document.querySelector("[data-search]");
 
+const modal = document.querySelector("#modal");
+
 let users = [];
 
 db_ref.on(
@@ -78,8 +80,18 @@ searchInput.addEventListener("input", (e) => {
   });
 });
 
-function log(val) {
-  console.log(val);
+function viewProfile(element) {
+  card = element.parentNode;
+
+  const username = card.querySelector("[data-username]").textContent;
+  const user_culture = card.querySelector("[data-culture]").textContent;
+  const user_bio = card.querySelector("[data-user-bio]").textContent;
+
+  modal.showModal();
+}
+
+function closeModal() {
+  modal.close();
 }
 
 function sortCultures(all_values) {

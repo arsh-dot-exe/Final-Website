@@ -74,13 +74,28 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
                   Praesent libero. Sed cursus ante dapibus diam. Sed nisi...
                 </p>
-                <button href="#" class="view__profile__button">View Profile</button>
+                <button href="#" class="view__profile__button" onclick="viewProfile(this)">
+                  View Profile
+                </button>
               </div>
             </template>
           </div>
         </div>
       </template>
     </div>
+
+    <dialog class="modal__dialog" id="modal">
+      <h2 class="modal__heading" data-modal__heading>Heading</h2>
+      <h2 class="modal__culture" data-modal__culture>Culture</h2>
+      <p class="modal__bio" data-modal__bio>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, velit?
+      </p>
+
+      <div class="button__container" button__container>
+        <button class="no_btn modal__btn" onclick="closeModal()">No</button>
+        <button class="yes_btn modal__btn" onclick="modalYes()">Yes</button>
+      </div>
+    </dialog>
   </body>
 
   <!-- Scripts to load for Database (MUST BE DONE AFTER BODY TAG) -->
