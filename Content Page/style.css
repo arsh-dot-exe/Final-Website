@@ -239,6 +239,7 @@ body {
   padding: 10px;
 
   background: linear-gradient(135deg, rgba(0, 173, 191, 0.75) 0%, rgba(70, 94, 251, 0.75) 100%);
+  border: none;
   border-radius: 11px;
 
   /* Text Formatting */
@@ -253,6 +254,7 @@ body {
   text-decoration-line: underline;
 
   color: #ffffff;
+  cursor: pointer;
 }
 
 .hide {
