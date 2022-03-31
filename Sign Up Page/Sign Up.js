@@ -47,7 +47,7 @@ function userRegister1(event) {
             sessionStorage.setItem("userUid", user.uid);
             userUid = user.uid;
 
-            window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%202.html";
+            window.location.href = "Sign Up 2.html";
           });
       })
       .catch((error) => {
@@ -79,7 +79,7 @@ function validatePassword() {
 
 // This function will be used in the second sign up page to go back
 function goBack() {
-  window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%201.html";
+  window.location.href = "Sign Up 1.html";
 }
 
 // This function will register the second sign up page input fields
@@ -104,14 +104,14 @@ function userRegister2(event) {
     db_ref
       .update(user_data)
       .then(() => {
-        window.location.href = "http://127.0.0.1:5500/Content%20Page/Content.html";
+        window.location.href = "/Content.html";
       })
       .catch((error) => {
         console.log(error.message);
       });
   } else {
     alert("You have to fill the first page first.");
-    window.location.href = "http://127.0.0.1:5500/Sign%20Up%20Page/Sign%20Up%201.html";
+    window.location.href = "Sign Up 1.html";
   }
 
   event.preventDefault();
