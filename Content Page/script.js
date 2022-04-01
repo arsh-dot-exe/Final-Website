@@ -101,7 +101,9 @@ function closeModal() {
   modal.close();
 }
 
-function modalYes() {}
+function modalYes() {
+  alert("Placeholder button with no function");
+}
 
 function sortCultures(all_values) {
   sorted_list = [];
