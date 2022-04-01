@@ -130,3 +130,8 @@ function sortCultures(all_values) {
 
   return sorted_list;
 }
+
+function toggleShown(element) {
+  console.log(element.parentNode.parentNode);
+  heading = element.parentNode.children[0].textContent;
+}

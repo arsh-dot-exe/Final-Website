@@ -1,81 +1,120 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyC9s_hzLcJwxlm-CsOF0rrQ3H9xDu3hhvw",
-  authDomain: "dd-find-culture-website.firebaseapp.com",
-  databaseURL: "https://dd-find-culture-website-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "dd-find-culture-website",
-  storageBucket: "dd-find-culture-website.appspot.com",
-  messagingSenderId: "363929239376",
-  appId: "1:363929239376:web:708eefe00d70123082f655",
-};
+const reflectionContainer = document.querySelector("[data-reflection-container]");
+const reflectionGroupTemplate = document.querySelector("[data-culture-template]");
+const searchInput = document.querySelector("[data-search]");
 
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const no_data_heading = document.querySelector("#no_data_found");
 
-// Initalize Variables
-const auth = firebase.auth();
-const database = firebase.database();
-// var db_ref = database.ref("");
+let users = [];
 
-const userUid = sessionStorage.getItem("userUid");
+db_ref = database.ref("reflections/");
+db_ref.on("value", (snapshot) => {
+  all_values = snapshot.val();
+  console.log(all_values);
+  sorted_values = sortCultures(all_values);
 
-const addModal = document.querySelector("#add_reflection_modal");
-
-function addReflection() {
-  culture_input = document.getElementById("reflection_culture");
-  reflection__input = document.getElementById("reflection");
-
-  if (inputValidation) {
-    var db_ref = database.ref();
-
-    let profileData;
-    db_ref.child("users/" + userUid).on("value", async (snapshot) => {
-      profileData = snapshot.val();
-
-      var reflectionData = {
-        name: profileData.user_name,
-        userCulture: profileData.culture,
-        reflectionCulture: culture_input.value,
-        reflection: reflection__input.value,
-      };
-
-      db_ref
-        .child("reflections/")
-        .push(reflectionData)
-        .then(() => {
-          culture_input.value = "";
-          reflection__input.value = "";
-
-          closeModal();
-        });
-    });
-  }
-}
-
-function inputValidation() {
-  culture_input = document.getElementById("reflection_culture");
-  reflection__input = document.getElementById("reflection");
-
-  if (culture_input.value.length > 4) {
-    if (wordCount(reflection__input) > 100) {
-      return true;
-    } else {
-      alert("For a substantial reflection, the word count must be greater than 100 words!");
-      return false;
-    }
+  if (sorted_values == null) {
+    no_data_heading.classList.remove("hideElement");
   } else {
-    alert("The culture input must be greater than 4 characters!");
-    return false;
+    no_data_heading.classList.add("hideElement");
   }
+
+  sorted_values.forEach((culture) => {
+    const reflection_group = reflectionGroupTemplate.content.cloneNode(true);
+
+    const culture_heading = reflection_group.children[0].querySelector("[data-culture-heading]");
+    culture_heading.textContent = culture[0].reflectionCulture;
+
+    const reflectionCardTemplate = reflection_group.querySelector("[data-reflection-template]");
+    const reflectionCardContainer = reflection_group.querySelector("[data-all-reflections]");
+
+    let count = 0;
+    culture.forEach((user) => {
+      const card = reflectionCardTemplate.content.cloneNode(true).children[0];
+
+      const username = card.querySelector("[data-username]");
+      const user_culture = card.querySelector("[data-culture]");
+      const userReflection = card.querySelector("[data-reflection]");
+      const publishDate = card.querySelector("[data-publish-date]");
+
+      username.textContent = user.name;
+      user_culture.textContent = user.reflectionCulture;
+      userReflection.textContent = cutWords(200, user.reflection);
+      publishDate.textContent = toDateTime(user.timeAdded);
+
+      reflectionCardContainer.append(card);
+
+      users.push({ name: user.name, culture: user.reflectionCulture, element: card });
+
+      if (count >= 1) {
+        card.classList.add("hideCard");
+      }
+
+      card.classList.add("big");
+
+      count++;
+    });
+
+    reflectionContainer.append(reflection_group);
+  });
+});
+
+function toDateTime(secs) {
+  var t = new Date(1970, 0, 1);
+  t.setSeconds(secs);
+
+  date_day = t.getDate();
+  date_month = t.getMonth();
+  date_year = t.getFullYear();
+
+  dateStr = date_day + "/" + date_month + "/" + date_year;
+  console.log(dateStr);
+  return dateStr;
 }
 
-function wordCount(str) {
-  return str.value.split(" ").length;
+function sortCultures(all_values) {
+  sorted_list = [];
+  culture_names = [];
+
+  // "Object.values() is an inbuilt JS function to get all Object values for ".forEach()" to work
+  Object.values(all_values).forEach((user) => {
+    culture_names.push(user.reflectionCulture);
+  });
+
+  culture_names = [...new Set(culture_names)];
+  temp_values = Object.values(all_values);
+
+  for (var culture of culture_names) {
+    values_of_cult = [];
+    for (var index in temp_values) {
+      if (temp_values[index].reflectionCulture == culture) {
+        values_of_cult.push(temp_values[index]);
+      }
+    }
+
+    sorted_list.push(values_of_cult);
+  }
+
+  return sorted_list;
 }
 
-function openReflectionDialog() {
-  addModal.showModal();
+function cutWords(characterCount, str) {
+  newStr = str.substring(0, characterCount) + "...";
+  return newStr;
 }
 
-function closeModal() {
-  addModal.close();
-}
+searchInput.addEventListener("input", (e) => {
+  console.log(e.target.value.toLowerCase());
+  const value = e.target.value.toLowerCase();
+
+  users.forEach((user) => {
+    const isVisible =
+      user.name.toLowerCase().includes(value) || user.culture.toLowerCase().includes(value);
+
+    user.element.classList.toggle("hideElement", !isVisible);
+  });
+
+  $(".reflection__grp").each(function () {
+    $(".culture__heading", this).toggle($(".reflection__card:visible", this).length != 0);
+    $(".arrow", this).toggle($(".reflection__card:visible", this).length != 0);
+  });
+});

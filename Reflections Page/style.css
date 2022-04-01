@@ -380,3 +380,7 @@ textarea {
 
   cursor: pointer;
 }
+
+.hideElement {
+  display: none !important;
+}
