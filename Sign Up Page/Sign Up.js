@@ -62,26 +62,6 @@ function userRegister1(event) {
   return false;
 }
 
-// This function will validate the password inputted in the fields
-function validatePassword() {
-  password = document.getElementById("password").value;
-  confirmPassword = document.getElementById("confirm_password").value;
-  match__div = document.getElementById("match__div");
-
-  if (password == confirmPassword) {
-    match__div.style.visibility = "hidden";
-    return true;
-  } else {
-    match__div.style.visibility = "visible";
-    return false;
-  }
-}
-
-// This function will be used in the second sign up page to go back
-function goBack() {
-  window.location.href = "Sign Up 1.html";
-}
-
 // This function will register the second sign up page input fields
 function userRegister2(event) {
   userUid = sessionStorage.getItem("userUid");
@@ -116,4 +96,24 @@ function userRegister2(event) {
 
   event.preventDefault();
   return false;
+}
+
+// This function will validate the password inputted in the fields
+function validatePassword() {
+  password = document.getElementById("password").value;
+  confirmPassword = document.getElementById("confirm_password").value;
+  match__div = document.getElementById("match__div");
+
+  if (password == confirmPassword) {
+    match__div.style.visibility = "hidden";
+    return true;
+  } else {
+    match__div.style.visibility = "visible";
+    return false;
+  }
+}
+
+// This function will be used in the second sign up page to go back
+function goBack() {
+  window.location.href = "Sign Up 1.html";
 }

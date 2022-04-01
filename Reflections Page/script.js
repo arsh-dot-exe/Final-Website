@@ -14,87 +14,62 @@ const app = firebase.initializeApp(firebaseConfig);
 // Initalize Variables
 const auth = firebase.auth();
 const database = firebase.database();
-var db_ref = database.ref("users/");
+// var db_ref = database.ref("");
 
 const userUid = sessionStorage.getItem("userUid");
 
-const cultureContainer = document.querySelector("[data-culture-container]");
-const cultureGroupTemplate = document.querySelector("[data-culture-group]");
-const searchInput = document.querySelector("[data-search]");
-
 const addModal = document.querySelector("#add_reflection_modal");
 
-let users = [];
+function addReflection() {
+  culture_input = document.getElementById("reflection_culture");
+  reflection__input = document.getElementById("reflection");
 
-db_ref.on(
-  "value",
-  (snapshot) => {
-    all_values = snapshot.val();
-    sorted_values = sortCultures(all_values);
+  if (inputValidation) {
+    var db_ref = database.ref();
 
-    sorted_values.forEach((culture) => {
-      const culture_group = cultureGroupTemplate.content.cloneNode(true);
+    let profileData;
+    db_ref.child("users/" + userUid).on("value", async (snapshot) => {
+      profileData = snapshot.val();
 
-      const culture_heading = culture_group.children[0].querySelector("[data-culture-heading]");
-      culture_heading.textContent = culture[0].culture;
+      var reflectionData = {
+        name: profileData.user_name,
+        userCulture: profileData.culture,
+        reflectionCulture: culture_input.value,
+        reflection: reflection__input.value,
+      };
 
-      const userCardContainer = culture_group.querySelector("[data-user-cards-container]");
-      const userCardTemplate = culture_group.querySelector("[data-user-template]");
+      db_ref
+        .child("reflections/")
+        .push(reflectionData)
+        .then(() => {
+          culture_input.value = "";
+          reflection__input.value = "";
 
-      culture.forEach((user) => {
-        const card = userCardTemplate.content.cloneNode(true).children[0];
-
-        const username = card.querySelector("[data-username]");
-        const user_culture = card.querySelector("[data-culture]");
-        const user_bio = card.querySelector("[data-user-bio]");
-
-        username.textContent = user.user_name;
-        user_culture.textContent = user.culture;
-        user_bio.textContent = user.userBio;
-        userCardContainer.append(card);
-
-        users.push({ name: user.user_name, culture: user.culture, element: card });
-      });
-
-      cultureContainer.append(culture_group);
+          closeModal();
+        });
     });
-  },
-  (errorObject) => {
-    console.log("The read failed: " + errorObject.name);
   }
-);
+}
 
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
-  users.forEach((user) => {
-    const isVisible =
-      user.name.toLowerCase().includes(value) || user.culture.toLowerCase().includes(value);
-    user.element.classList.toggle("hide", !isVisible);
-  });
+function inputValidation() {
+  culture_input = document.getElementById("reflection_culture");
+  reflection__input = document.getElementById("reflection");
 
-  $(".cult__grp").each(function () {
-    // console.log($(".user__card:visible", this));
+  if (culture_input.value.length > 4) {
+    if (wordCount(reflection__input) > 100) {
+      return true;
+    } else {
+      alert("For a substantial reflection, the word count must be greater than 100 words!");
+      return false;
+    }
+  } else {
+    alert("The culture input must be greater than 4 characters!");
+    return false;
+  }
+}
 
-    return $(".culture__heading", this).toggle($(".user__card:visible", this).length != 0);
-  });
-});
-
-function viewProfile(element) {
-  card = element.parentNode;
-
-  const username_value = card.querySelector("[data-username]").textContent;
-  const user_culture_value = card.querySelector("[data-culture]").textContent;
-  const user_bio_value = card.querySelector("[data-user-bio]").textContent;
-
-  modal.showModal();
-
-  const username_field = modal.querySelector("[data-modal-heading]");
-  const culture_field = modal.querySelector("[data-modal-culture]");
-  const bio_field = modal.querySelector("[data-modal-bio]");
-
-  username_field.textContent = username_value;
-  culture_field.textContent = user_culture_value;
-  bio_field.textContent = user_bio_value;
+function wordCount(str) {
+  return str.value.split(" ").length;
 }
 
 function openReflectionDialog() {
@@ -103,34 +78,4 @@ function openReflectionDialog() {
 
 function closeModal() {
   addModal.close();
-}
-
-function modalYes() {
-  alert("Placeholder button with no function");
-}
-
-function sortCultures(all_values) {
-  sorted_list = [];
-  culture_names = [];
-
-  // "Object.values() is an inbuilt JS function to get all Object values for ".forEach()" to work
-  Object.values(all_values).forEach((user) => {
-    culture_names.push(user.culture);
-  });
-
-  culture_names = [...new Set(culture_names)];
-  temp_values = Object.values(all_values);
-
-  for (var cult_name of culture_names) {
-    values_of_cult = [];
-    for (var index in temp_values) {
-      if (temp_values[index].culture == cult_name) {
-        values_of_cult.push(temp_values[index]);
-      }
-    }
-
-    sorted_list.push(values_of_cult);
-  }
-
-  return sorted_list;
 }
