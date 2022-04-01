@@ -14,7 +14,7 @@
 }
 
 /* Search Input */
-div.search__input input {
+.input__box {
   /* Text formatting */
   font-family: Poppins;
   font-style: normal;
@@ -238,4 +238,145 @@ div.search__input i {
 
 .big {
   width: 70%;
+}
+
+.search__add {
+  display: flex;
+  align-items: center;
+}
+
+.plus__icon {
+  font-size: 42px;
+
+  color: #ee6c4d;
+  border-color: transparent;
+
+  cursor: pointer;
+
+  margin-left: 10px;
+}
+
+.modal__dialog {
+  z-index: 100;
+}
+.modal__dialog::backdrop {
+  background: linear-gradient(45deg, rgba(0, 173, 191, 0.75) 0%, rgba(70, 94, 251, 0.75) 100%);
+  opacity: 0.4;
+}
+
+.modal__dialog {
+  top: 40%;
+  transform: translateY(-50%);
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal__div {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+}
+
+.modal__heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.modal__culture {
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  color: #ababab;
+
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.modal__bio {
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.07em;
+
+  text-align: center;
+
+  padding-bottom: 1em;
+}
+
+.modal__bio::before {
+  content: open-quote;
+}
+
+.modal__bio::after {
+  content: close-quote;
+}
+
+.modal__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  border: none;
+  border-radius: 11px;
+
+  /* Text Formatting */
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height */
+
+  letter-spacing: 0.07em;
+  text-decoration-line: underline;
+
+  background: linear-gradient(135deg, rgba(0, 173, 191, 0.75) 0%, rgba(70, 94, 251, 0.75) 100%);
+  cursor: pointer;
+  color: white;
+
+  width: 50%;
+
+  margin-inline: 0.35rem;
+}
+
+dialog input,
+textarea {
+  width: clamp(300px, 35vw, 500px) !important;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 1.25em 1em !important;
+}
+
+/* Dropdown Button */
+.textarea__input {
+  /* Text Formatting */
+  padding-top: 1em;
+  margin-bottom: 30px;
+
+  /* Box Formatting */
+  height: 186px;
+  resize: none;
+}
+
+.cross__symbol {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  font-size: 23px;
+
+  cursor: pointer;
 }
