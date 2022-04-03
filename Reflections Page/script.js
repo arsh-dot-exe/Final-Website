@@ -9,7 +9,6 @@ let users = [];
 db_ref = database.ref("reflections/");
 db_ref.on("value", (snapshot) => {
   all_values = snapshot.val();
-  console.log(all_values);
   sorted_values = sortCultures(all_values);
 
   if (sorted_values == null) {
@@ -36,20 +35,24 @@ db_ref.on("value", (snapshot) => {
       const userReflection = card.querySelector("[data-reflection]");
       const publishDate = card.querySelector("[data-publish-date]");
 
-      username.textContent = user.name;
-      user_culture.textContent = user.reflectionCulture;
-      userReflection.textContent = cutWords(200, user.reflection);
-      publishDate.textContent = toDateTime(user.timeAdded);
-
-      reflectionCardContainer.append(card);
-
-      users.push({ name: user.name, culture: user.reflectionCulture, element: card });
-
-      if (count >= 1) {
-        card.classList.add("hideCard");
+      if (count % 2 == 0) {
+        card.classList.add("big");
+        userReflection.textContent = cutWords(200, user.reflection);
+      } else {
+        userReflection.textContent = cutWords(70, user.reflection);
+        card.classList.add("small");
       }
 
-      card.classList.add("big");
+      username.textContent = user.name;
+      user_culture.textContent = user.reflectionCulture;
+      publishDate.textContent = toDateTime(user.timeAdded);
+
+      if (count >= 2) {
+        card.classList.add("hideElement2");
+      }
+
+      reflectionCardContainer.append(card);
+      users.push({ name: user.name, culture: user.reflectionCulture, element: card });
 
       count++;
     });
@@ -67,7 +70,6 @@ function toDateTime(secs) {
   date_year = t.getFullYear();
 
   dateStr = date_day + "/" + date_month + "/" + date_year;
-  console.log(dateStr);
   return dateStr;
 }
 

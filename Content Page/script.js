@@ -102,7 +102,8 @@ function closeModal() {
 }
 
 function modalYes() {
-  alert("Placeholder button with no function");
+  alert(`⚠️WORK IN PROGRESS⚠️
+  This button will send notification to the other user for meeting`);
 }
 
 function sortCultures(all_values) {

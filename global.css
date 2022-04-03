@@ -111,3 +111,7 @@
   opacity: 1;
   z-index: -1;
 }
+
+a:active {
+  color: red;
+}
