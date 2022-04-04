@@ -102,8 +102,7 @@ function closeModal() {
 }
 
 function modalYes() {
-  alert(`⚠️WORK IN PROGRESS⚠️
-  This button will send notification to the other user for meeting`);
+  alert(`This button will send notification to the other user for meeting`);
 }
 
 function sortCultures(all_values) {
