@@ -53,6 +53,8 @@ function addReflection() {
           reflection__input.value = "";
 
           closeModal();
+
+          document.location.reload();
         });
     });
   }
