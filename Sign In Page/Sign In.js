@@ -16,25 +16,29 @@ const auth = firebase.auth();
 const database = firebase.database();
 
 function userLogin(event) {
-  const emailId = document.getElementById("email__input").value;
+  const emailId = document.getElementById("email__input");
   const password = document.getElementById("password__input").value;
 
-  auth
-    .signInWithEmailAndPassword(emailId, password)
-    .then(() => {
-      user = auth.currentUser;
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailId.value)) {
+    auth
+      .signInWithEmailAndPassword(emailId.value, password)
+      .then(() => {
+        user = auth.currentUser;
 
-      sessionStorage.setItem("userUid", user.uid);
-      userUid = user.uid;
+        sessionStorage.setItem("userUid", user.uid);
+        userUid = user.uid;
 
-      window.location.href = "/Content Page/Content.html";
-    })
-    .catch((error) => {
-      var error_code = error.code;
-      var error_message = error.message;
+        window.location.href = "/Content Page/Content.html";
+      })
+      .catch((error) => {
+        var error_code = error.code;
+        var error_message = error.message;
 
-      alert(error_message);
-    });
+        alert(error_message);
+      });
+  } else {
+    alert("You have entered an invalid email address!");
+  }
 
   event.preventDefault();
   return false;
